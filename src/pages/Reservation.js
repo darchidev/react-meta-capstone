@@ -1,7 +1,9 @@
-import React from "react";
-import { Form } from "react-router-dom";
+import React, { useState } from "react";
+import { Form, useNavigate } from "react-router-dom";
 import Layout from "../components/Layout";
 import FormBlock from "../components/FormBlock";
+import Modal from "../components/Modal";
+import { FaCheck } from "react-icons/fa";
 
 const Reservation = () => {
 	const selectOpts = [
@@ -19,7 +21,19 @@ const Reservation = () => {
 		seats: 2,
 		occasion: "anniversary",
 	};
-	console.log(new Date().toDateString());
+	const [isModalOpen, setIsModalOpen] = useState(false);
+	const navigate = useNavigate();
+	const openModal = () => {
+		setIsModalOpen(true);
+		setTimeout(() => {
+			closeModal();
+			navigate("/");
+		}, 1600);
+	};
+
+	const closeModal = () => {
+		setIsModalOpen(false);
+	};
 	return (
 		<Layout>
 			<div className="w-full bg-[#495D56]">
@@ -30,7 +44,7 @@ const Reservation = () => {
 			<div className="w-full bg-slate-50">
 				<div className="max-w-5xl mx-auto py-10 flex flex-col">
 					<div className="mx-auto max-w-md mt-10 w-full">
-						<Form method="get" action="/" className="flex flex-col gap-4">
+						<Form method="get" className="flex flex-col gap-4">
 							<FormBlock
 								label={"Date"}
 								type={"date"}
@@ -59,6 +73,7 @@ const Reservation = () => {
 							/>
 							<button
 								type="submit"
+								onClick={openModal}
 								className="my-10 px-8 py-2 bg-[#f4cd14] hover:bg-[#495C55] border border-transparent hover:border hover:border-[#495C55] hover:text-white rounded-3xl"
 							>
 								Reserve
@@ -67,6 +82,16 @@ const Reservation = () => {
 					</div>
 				</div>
 			</div>
+			<Modal
+				isOpen={isModalOpen}
+				closeModal={closeModal}
+				content={
+					<p className="text-xl flex justify-center gap-6 w-full my-10 text-center text-white ">
+						{"The table has been successfully reserved! "}
+						<FaCheck size={30} />
+					</p>
+				}
+			/>
 		</Layout>
 	);
 };

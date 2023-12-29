@@ -22,10 +22,18 @@ const Footer = () => {
 					<div className="col-span-2 flex flex-col">
 						<h3 className="text-lg py-2">SITEMAP</h3>
 						<ul>
-							<li>Home</li>
-							<li>Menu</li>
-							<li>Reservation</li>
-							<li>About</li>
+							<Link to="/">
+								<li>Home</li>
+							</Link>
+							<Link to="/menu">
+								<li>Menu</li>
+							</Link>
+							<Link to="/reservation">
+								<li>Reservation</li>
+							</Link>
+							<Link to="/about">
+								<li>About</li>
+							</Link>
 						</ul>
 					</div>
 					<div className="col-span-3">

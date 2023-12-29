@@ -8,7 +8,9 @@ const Menu = () => {
 			<div className="max-w-5xl mx-auto text-center my-10">
 				<h1 className="text-3xl">Sorry but this page doesn't exist yet!</h1>
 				<Link to="/">
-					<button>Turn Back Home</button>
+					<button className="my-10 px-8 py-2 mx-4 bg-[#f4cd14] hover:bg-[#495C55] border border-transparent hover:border hover:border-[#495C55] hover:text-white rounded-3xl">
+						Turn Back Home
+					</button>
 				</Link>
 			</div>
 		</Layout>
