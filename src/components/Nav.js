@@ -5,16 +5,19 @@ import { IoCloseSharp, IoMenuSharp } from "react-icons/io5";
 const Nav = ({ items }) => {
 	const [isOpen, setIsOpen] = useState(false);
 	return (
-		<nav className="mx-auto flex h-24 border">
+		<nav className="mx-auto flex h-24">
 			<img
 				src={Logo}
 				alt="Little Lemon logo"
 				height={"3rem"}
 				className="py-2 px-3 mr-2"
 			/>
-			<ul className="flex gap-0 w-full">
-				{items.map((item) => (
-					<li className="hidden lg:block my-auto px-6 py-6 border border-transparent hover:bg-[#F4CE13] font-sans font-light text-sm hover:border hover:border-[#485E58] text-[#485E58]">
+			<ul className="flex gap-0 w-full justify-end">
+				{items.map((item, i) => (
+					<li
+						key={`${item}-${i}`}
+						className="hidden lg:block my-auto px-6 py-6 border border-transparent hover:bg-[#F4CE13] font-sans font-light text-sm hover:border hover:border-[#485E58] text-[#485E58]"
+					>
 						<a href={item.path}>{item.title.toUpperCase()}</a>
 					</li>
 				))}
